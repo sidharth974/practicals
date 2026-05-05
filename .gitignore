@@ -1,0 +1,23 @@
+# Compiled Java
+*.class
+*.jar
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Hadoop output
+output/
+**/output/
