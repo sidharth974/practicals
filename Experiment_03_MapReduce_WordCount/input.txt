@@ -1,3 +1,0 @@
-hello world hello hadoop
-mapreduce is fun hadoop is powerful
-hello mapreduce world

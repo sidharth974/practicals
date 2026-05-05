@@ -1,25 +1,41 @@
 # Computer Laboratory III (417534) — CL3 Practicals
 
-Implementations for the SPPU 4th-year Computer Engineering subject **417534: Computer Laboratory III**.
+Implementations for the SPPU 4th-year Computer Engineering subject **417534: Computer Laboratory III**, organised by the two streams it spans:
 
-Each practical lives in its own folder with source code and a `README.md` describing the **Aim**, **Requirements**, **How to run**, and **Expected output**.
+- **DC** — Distributed Computing (6 practicals)
+- **CI** — Computational Intelligence (4 practicals)
+
+Each folder has source code + its own `README.md` with run instructions, plus a `requirements.txt` where third-party libraries are needed.
 
 ## Index
+
+### Distributed Computing (DC)
 | # | Practical | Tech |
 |---|-----------|------|
-| 1 | [RPC Factorial](Experiment_01_RPC_Factorial/) | Python + Pyro4 |
-| 2 | [RMI String Concatenation](Experiment_02_RMI_StringConcat/) | Java RMI |
-| 3 | [MapReduce Word Count](Experiment_03_MapReduce_WordCount/) | Java + Hadoop |
-| 4 | [Fuzzy Set Operations](Experiment_04_Fuzzy_Sets/) | Python |
-| 5 | [Load Balancing (Round Robin)](Experiment_05_Load_Balancing/) | Python |
-| 6 | [Clonal Selection Algorithm](Experiment_06_Clonal_Selection/) | Python |
-| 7 | [AIS Damage Classification](Experiment_07_AIS_Damage_Classification/) | Python |
-| 8 | [DEAP-style Evolutionary Algorithm](Experiment_08_DEAP_Evolutionary/) | Python |
-| 9 | [RMI Hotel Booking](Experiment_09_RMI_Hotel_Booking/) | Java RMI |
-| 10 | [ACO for TSP](Experiment_10_ACO_TSP/) | Python |
+| 1 | [RPC Factorial](DC_1_RPC_Factorial/) | Python `xmlrpc` |
+| 2 | [RMI String Concatenation](DC_2_RMI_StringConcat/) | Pyro5 + Name Server |
+| 3 | [Fuzzy Logic](DC_3_Fuzzy_Logic/) | Python (set ops + Cartesian product + Max-Min composition) |
+| 4 | [Load Balancing](DC_4_Load_Balancing/) | Python (Round Robin / Least Connections / Random) |
+| 5 | [Genetic Algorithm for NN tuning](DC_5_Genetic_Algorithm/) | DEAP + PyTorch |
+| 6 | [Clonal Selection Algorithm](DC_6_Clonal_Selection/) | Python |
 
-## Global Requirements
-- **Python 3.6+** for practicals 1, 4, 5, 6, 7, 8, 10
-  - Practical 1: `pip install -r Experiment_01_RPC_Factorial/requirements.txt` (Pyro4)
-- **JDK 8+** for practicals 2, 3, 9
-- **Apache Hadoop 3.x** for practical 3
+### Computational Intelligence (CI)
+| # | Practical | Tech |
+|---|-----------|------|
+| 1 | [AIS Damage Classification](CI_1_AIS_Damage/) | NumPy + scikit-learn |
+| 2 | [DEAP Binary Optimization](CI_2_DEAP_Binary/) | DEAP |
+| 3 | [MapReduce Hottest/Coolest Year](CI_3_MapReduce_Weather/) | Python `concurrent.futures` |
+| 4 | [Ant Colony Optimization (TSP)](CI_4_ACO_TSP/) | NumPy |
+
+## Global Setup
+- Python 3.8+ is sufficient for everything (no Hadoop / no Java needed).
+- Install third-party packages per-folder:
+  ```bash
+  pip install -r DC_2_RMI_StringConcat/requirements.txt   # Pyro5
+  pip install -r DC_5_Genetic_Algorithm/requirements.txt  # DEAP, PyTorch, sklearn
+  pip install -r CI_1_AIS_Damage/requirements.txt         # NumPy, scikit-learn
+  pip install -r CI_2_DEAP_Binary/requirements.txt        # DEAP, NumPy
+  ```
+
+## Theory & Viva Prep
+A complete viva-prep document covering theory, real-world examples, code walkthroughs, and Q&A is at [VIVA_THEORY.md](VIVA_THEORY.md) (and PDF [VIVA_THEORY.pdf](VIVA_THEORY.pdf)).
