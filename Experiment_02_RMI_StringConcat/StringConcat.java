@@ -1,9 +1,22 @@
-// Remote interface: defines the contract for the RMI service.
-// Both the server (which implements it) and the client (which uses it) reference this interface.
-import java.rmi.*;
+// Remote interface: defines all string-manipulation services exposed by the server.
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.List;
 
-// Any RMI-callable interface must extend java.rmi.Remote.
 public interface StringConcat extends Remote {
-    // Every remote method must declare RemoteException to handle network/RMI failures.
+
+    // Concatenate two strings.
     String concat(String a, String b) throws RemoteException;
+
+    // Concatenate a list of strings using a chosen separator.
+    String concatAll(List<String> parts, String separator) throws RemoteException;
+
+    // Reverse a single string.
+    String reverse(String s) throws RemoteException;
+
+    // Convert a string to upper-case.
+    String upper(String s) throws RemoteException;
+
+    // Return how many requests this server has handled in total.
+    int requestCount() throws RemoteException;
 }
