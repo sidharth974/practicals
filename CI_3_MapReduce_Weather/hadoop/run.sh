@@ -21,9 +21,16 @@ done
 sleep 3
 echo "Daemons:" ; jps
 
-# 3. Compile.
-echo ">>> Compiling Java sources"
-javac -classpath "$(hadoop classpath)" -d . WeatherMapper.java WeatherReducer.java WeatherDriver.java
+# 3. Compile with Java 11 (Hadoop 3.x runs on Java 11; the system default
+#    may be Java 21 which produces class files Hadoop's JVM can't load).
+JAVAC11=/usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+if [ ! -x "$JAVAC11" ]; then
+    echo "ERROR: Java 11 javac not found at $JAVAC11"
+    echo "       Install with:  sudo apt install openjdk-11-jdk"
+    exit 1
+fi
+echo ">>> Compiling Java sources with Java 11 (matches Hadoop's runtime)"
+"$JAVAC11" -classpath "$(hadoop classpath)" -d . WeatherMapper.java WeatherReducer.java WeatherDriver.java
 jar -cvf weather.jar *.class >/dev/null
 echo "    Built weather.jar"
 
