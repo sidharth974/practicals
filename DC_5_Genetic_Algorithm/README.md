@@ -1,10 +1,8 @@
-# DC-5: Genetic Algorithm for Neural-Network Hyperparameter Tuning
+# DC-5: Genetic Algorithm with DEAP
 
-**Aim:** Use a Genetic Algorithm (DEAP framework) to evolve the best
-hyperparameters (hidden neurons, learning rate, activation function)
-for a small PyTorch neural network on a regression task.
+**Aim:** Use a Genetic Algorithm (DEAP framework) to evolve a population of real-valued vectors toward the minimum of the Sphere function `f(x) = Σ xᵢ²`.
 
-**Tech:** Python + DEAP + PyTorch + scikit-learn.
+**Tech:** Python + DEAP + NumPy. No PyTorch, no scikit-learn.
 
 ## Run
 ```bash
@@ -13,6 +11,4 @@ python genetic_algorithm.py
 ```
 
 ## What you'll see
-A 10-generation GA evolving 10 individuals. Per generation, DEAP prints
-how many evaluations were done and the best fitness so far. At the end
-the script prints the best hyperparameters and their test MSE.
+30 generations of evolution. Each line shows generation number, evaluations, average fitness, and minimum fitness. The best individual at the end should have all genes near zero with fitness near zero (the global optimum of the Sphere function).
